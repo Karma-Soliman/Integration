@@ -3,8 +3,6 @@ config()
 import pkg from "pg"
 const { Client } = pkg
 
-const app = express()
-app.use(express.json())
 
 const client = new Client({
     port: 5432,
