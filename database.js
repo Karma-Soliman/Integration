@@ -1,19 +1,21 @@
-require("dotenv").config()
-const express = require("express")
-const { Client } = require("pg")
+import { config } from "dotenv"
+config()
+import pkg from "pg"
+const { Client } = pkg
 
 const app = express()
 app.use(express.json())
 
 const client = new Client({
-  port: 5432,
-  database: process.env.DATABASE,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  ssl: {
+    port: 5432,
+    database: process.env.DATABASE,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    ssl: {
     rejectUnauthorized: false,
   },
 })
+export { client }
 
 async function connectDb() {
   try {
